@@ -39,11 +39,11 @@
             lblDias = new Label();
             nudDias = new NumericUpDown();
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            rbtBasico = new RadioButton();
             rbtCompleto = new RadioButton();
-            rbtSucursal = new RadioButton();
+            rbtBasico = new RadioButton();
+            groupBox2 = new GroupBox();
             rbtDomicilio = new RadioButton();
+            rbtSucursal = new RadioButton();
             chkGps = new CheckBox();
             btnCalcular = new Button();
             btnLimpiar = new Button();
@@ -61,6 +61,7 @@
             textBox4 = new TextBox();
             lblTotal = new Label();
             textTotal = new TextBox();
+            chkCorporativo = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)nudDias).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -81,7 +82,7 @@
             textCliente.Name = "textCliente";
             textCliente.Size = new Size(262, 31);
             textCliente.TabIndex = 1;
-            textCliente.TextChanged += textCliente_TextChanged;
+            textCliente.TextChanged += this.textCliente_TextChanged;
             // 
             // dtpSalida
             // 
@@ -98,7 +99,7 @@
             label1.Size = new Size(63, 25);
             label1.TabIndex = 2;
             label1.Text = "Salida:";
-            label1.Click += label1_Click;
+            label1.Click += this.label1_Click;
             // 
             // label2
             // 
@@ -159,16 +160,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Seguros";
             // 
-            // groupBox2
+            // rbtCompleto
             // 
-            groupBox2.Controls.Add(rbtDomicilio);
-            groupBox2.Controls.Add(rbtSucursal);
-            groupBox2.Location = new Point(318, 343);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(300, 150);
-            groupBox2.TabIndex = 11;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Entrega";
+            rbtCompleto.AutoSize = true;
+            rbtCompleto.Location = new Point(6, 93);
+            rbtCompleto.Name = "rbtCompleto";
+            rbtCompleto.Size = new Size(202, 29);
+            rbtCompleto.TabIndex = 1;
+            rbtCompleto.TabStop = true;
+            rbtCompleto.Text = "Completo(+RD$300)";
+            rbtCompleto.UseVisualStyleBackColor = true;
             // 
             // rbtBasico
             // 
@@ -181,27 +182,16 @@
             rbtBasico.Text = "Basico";
             rbtBasico.UseVisualStyleBackColor = true;
             // 
-            // rbtCompleto
+            // groupBox2
             // 
-            rbtCompleto.AutoSize = true;
-            rbtCompleto.Location = new Point(6, 93);
-            rbtCompleto.Name = "rbtCompleto";
-            rbtCompleto.Size = new Size(202, 29);
-            rbtCompleto.TabIndex = 1;
-            rbtCompleto.TabStop = true;
-            rbtCompleto.Text = "Completo(+RD$300)";
-            rbtCompleto.UseVisualStyleBackColor = true;
-            // 
-            // rbtSucursal
-            // 
-            rbtSucursal.AutoSize = true;
-            rbtSucursal.Location = new Point(6, 44);
-            rbtSucursal.Name = "rbtSucursal";
-            rbtSucursal.Size = new Size(124, 29);
-            rbtSucursal.TabIndex = 2;
-            rbtSucursal.TabStop = true;
-            rbtSucursal.Text = "En sucursal";
-            rbtSucursal.UseVisualStyleBackColor = true;
+            groupBox2.Controls.Add(rbtDomicilio);
+            groupBox2.Controls.Add(rbtSucursal);
+            groupBox2.Location = new Point(318, 343);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(300, 150);
+            groupBox2.TabIndex = 11;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Entrega";
             // 
             // rbtDomicilio
             // 
@@ -213,6 +203,17 @@
             rbtDomicilio.TabStop = true;
             rbtDomicilio.Text = "Domicilio(+RD500)";
             rbtDomicilio.UseVisualStyleBackColor = true;
+            // 
+            // rbtSucursal
+            // 
+            rbtSucursal.AutoSize = true;
+            rbtSucursal.Location = new Point(6, 44);
+            rbtSucursal.Name = "rbtSucursal";
+            rbtSucursal.Size = new Size(124, 29);
+            rbtSucursal.TabIndex = 2;
+            rbtSucursal.TabStop = true;
+            rbtSucursal.Text = "En sucursal";
+            rbtSucursal.UseVisualStyleBackColor = true;
             // 
             // chkGps
             // 
@@ -268,7 +269,7 @@
             lblEncabezado.Size = new Size(321, 25);
             lblEncabezado.TabIndex = 17;
             lblEncabezado.Text = "Dias    Vehiculos                Tarifas   Total";
-            lblEncabezado.Click += label5_Click;
+            lblEncabezado.Click += this.label5_Click;
             // 
             // lstAlquileres
             // 
@@ -358,11 +359,22 @@
             textTotal.Size = new Size(150, 31);
             textTotal.TabIndex = 28;
             // 
+            // chkCorporativo
+            // 
+            chkCorporativo.AutoSize = true;
+            chkCorporativo.Location = new Point(20, 60);
+            chkCorporativo.Name = "chkCorporativo";
+            chkCorporativo.Size = new Size(188, 29);
+            chkCorporativo.TabIndex = 29;
+            chkCorporativo.Text = "Cliente corporativo";
+            chkCorporativo.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1058, 619);
+            Controls.Add(chkCorporativo);
             Controls.Add(textTotal);
             Controls.Add(lblTotal);
             Controls.Add(textBox4);
@@ -394,7 +406,7 @@
             Controls.Add(lblCliente);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
+            Load += this.Form1_Load;
             ((System.ComponentModel.ISupportInitialize)nudDias).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -439,5 +451,6 @@
         private TextBox textBox4;
         private Label lblTotal;
         private TextBox textTotal;
+        private CheckBox chkCorporativo;
     }
 }
